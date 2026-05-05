@@ -20,4 +20,4 @@ jobs:
 
       - run: |
           docker compose -f compose.yaml build 
-          docker push
+          docker push regd1.azurecr.io/mongoapp:${{ github.sha }}
