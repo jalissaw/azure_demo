@@ -1,5 +1,7 @@
 services:
   mongo:
+    env_file:
+      - .env
     image: mongo
     ports:
       - 27017:27017
@@ -9,6 +11,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
 
   mongo-express:
+    env_file:
+      - .env
     image: mongo-express
     restart: always
     ports:
