@@ -19,5 +19,5 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - run: |
-          docker compose -f compose.yaml build regd1.azurecr.io/myapp:${{ github.sha }}
-          docker push regd1.azurecr.io/myapp:${{ github.sha }}
+          docker compose -f compose.yaml build regd1.azurecr.io/${{ github.sha }}
+          docker push regd1.azurecr.io/${{ github.sha }}
