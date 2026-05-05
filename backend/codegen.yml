@@ -1,0 +1,9 @@
+overwrite: true
+# Point 'schema' to your local file since it contains your type definitions
+schema: "./graphql/schema.graphql"
+generates:
+  src/generated/:
+    preset: "client"
+    presetConfig:
+      fragmentMasking: false # Optional: turns off a complex feature called masking for easier learning
+    plugins: [] # Leave this empty; the preset handles it

@@ -1,0 +1,23 @@
+{
+	"scripts": {
+		"codegen": "graphql-codegen",
+		"dev": "nodemon server.js"
+	},
+	"dependencies": {
+		"cors": "^2.8.6",
+		"dotenv": "^17.4.2",
+		"express": "^5.2.1",
+		"graphql": "^16.13.2",
+		"graphql-http": "^1.22.4",
+		"mongodb": "^7.2.0",
+		"ruru": "^2.0.0"
+	},
+	"devDependencies": {
+		"@0no-co/graphqlsp": "^1.15.4",
+		"@graphql-codegen/cli": "^6.3.1",
+		"@graphql-codegen/schema-ast": "^5.0.2",
+		"@parcel/watcher": "^2.5.6",
+		"nodemon": "^3.1.14",
+		"prettier": "3.8.3"
+	}
+}

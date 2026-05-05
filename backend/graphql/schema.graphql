@@ -1,0 +1,21 @@
+type User {
+	id: ID!
+	name: String!
+	age: Int!
+	occupations: [String]!
+}
+
+input CreateUserInput {
+	name: String!
+	age: Int!
+	occupations: [String]!
+}
+
+type Query {
+	users: [User!]!
+	getUsersById(id: ID!): User
+}
+
+type Mutation {
+	addUser(input: CreateUserInput!): User
+}
