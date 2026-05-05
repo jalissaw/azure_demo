@@ -4,7 +4,7 @@ services:
     # This points to YOUR registry
     image: regd1.azurecr.io/mongoapp:latests
     depends_on:
-      - mongodb
+      - mongo
   mongo:
     env_file:
       - .env
