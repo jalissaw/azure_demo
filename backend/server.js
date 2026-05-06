@@ -17,7 +17,7 @@ const corsOptions = {
 };
 
 const app = express();
-const uri = 'mongodb://root:mongopw@localhost:27017';
+const uri = 'mongodb://root:mongopw@mongo:27017';
 const client = new MongoClient(uri);
 // Construct a schema, using GraphQL schema language
 
