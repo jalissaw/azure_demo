@@ -2,7 +2,7 @@ name: Push Images to ACR
 
 on:
   push:
-    branches: ["main"] # Or whichever branch you use for "ready" code
+    branches: ["main", "master"]
 
 jobs:
   build-and-push:
