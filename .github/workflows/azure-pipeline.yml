@@ -19,13 +19,11 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      # --- BACKEND ---
       - name: Build and Push Backend
         run: |
           docker build ./backend -t regd1.azurecr.io/my-backend:${{ github.sha }} -t regd1.azurecr.io/my-backend:latest
           docker push regd1.azurecr.io/my-backend --all-tags
 
-      # --- FRONTEND ---
       - name: Build and Push Frontend
         run: |
           docker build ./my-app -t regd1.azurecr.io/my-frontend:${{ github.sha }} -t regd1.azurecr.io/my-frontend:latest
