@@ -12,7 +12,7 @@ function RouteComponent() {
 		queryFn: async () => {
 			//put the url in as an env variable
 			const res = await fetch(
-				"https://backend.internal.calmflower-4d343499.westus2.azurecontainerapps.io/graphql",
+				"https://backend.calmflower-4d343499.westus2.azurecontainerapps.io/graphql",
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
