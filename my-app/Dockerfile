@@ -1,24 +1,17 @@
-# Stage 1: Build (Notice the "AS build" - this is the name you were missing)
+# Stage 1: Build
 FROM node:alpine AS build
-
 WORKDIR /app
-
 COPY package*.json ./
-
 RUN npm install
-
 COPY . .
-
-
 RUN npm run build
 
+# Stage 2: Run (No Nginx)
+FROM node:alpine
+WORKDIR /app
+# Copy the entire .output folder
+COPY --from=build /app/.output ./.output
 
-FROM nginx:stable-alpine
-
-
-COPY --from=build /app/dist /usr/share/nginx/html
-
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Nitro runs on port 3000 by default
+EXPOSE 3000
+CMD ["node", ".output/server/index.mjs"]
