@@ -9,12 +9,12 @@ import { users } from "./users.js";
 import { MongoClient } from 'mongodb';
 import 'dotenv/config'
 
-const corsOptions = {
-	origin: ["https://backend.calmflower-4d343499.westus2.azurecontainerapps.io", "https://frontend.calmflower-4d343499.westus2.azurecontainerapps.io", "http://localhost:5173", "http://localhost:3000"],
-	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-	accessControlAllowOrigin: "*",
-	accessControlAllowCredentials: true,
-};
+// const corsOptions = {
+// 	origin: ["https://backend.calmflower-4d343499.westus2.azurecontainerapps.io", "https://frontend.calmflower-4d343499.westus2.azurecontainerapps.io", "http://localhost:5173", "http://localhost:3000"],
+// 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+// 	accessControlAllowOrigin: "*",
+// 	accessControlAllowCredentials: true,
+// };
 
 const app = express();
 const uri = 'mongodb://root:mongopw@mongo:27017';
@@ -101,7 +101,7 @@ const root = {
 
 // Create and use the GraphQL handler.
 app.use(express.json());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(
 	"/graphql",
 	createHandler({
