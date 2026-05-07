@@ -11,12 +11,15 @@ function RouteComponent() {
 		queryKey: ["users"],
 		queryFn: async () => {
 			//put the url in as an env variable
-			const res = await fetch("http://localhost:4000/graphql", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				// make own graphql query
-				body: JSON.stringify({ query: "{ users { name, age, id } }" }),
-			});
+			const res = await fetch(
+				"https://backend.internal.calmflower-4d343499.westus2.azurecontainerapps.io/graphql",
+				{
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					// make own graphql query
+					body: JSON.stringify({ query: "{ users { name, age, id } }" }),
+				}
+			);
 
 			return res.json();
 		},
