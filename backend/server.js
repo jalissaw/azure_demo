@@ -48,6 +48,7 @@ const root = {
 			const collection = await database.collection('user').find({}).toArray();
 
 			if (!collection) {
+				
 				throw new Error("Unable to connect")
 			}
 		
@@ -69,7 +70,7 @@ const root = {
 		if (!user) {
 			throw new Error("User not found");
 		}
-		return users.find((user) => user.id === id);
+		return user;
 	},
 
 	
@@ -83,8 +84,8 @@ const root = {
 			  const collection = database.collection('user');
 			  newUser = await collection.insertOne(newUser)
 			
-			} finally {
-			  await client.close();
+			} catch(err) {
+				console.log(err)
 			}
 			
 			return {
@@ -92,9 +93,6 @@ const root = {
 			  id: newUser._id 
 			};
 		  }
-
-	
-		
 	  
 };
 
@@ -119,3 +117,5 @@ app.get("/", (_req, res) => {
 // Start the server at port
 app.listen(4000);
 console.log("Running a GraphQL API server at http://localhost:4000/graphql");
+
+export default app
