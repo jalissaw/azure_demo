@@ -1,8 +1,12 @@
 import request from "supertest";
-import app from "./server";
+import { app, client } from "./server";
+
+// Test 1: Successful Retrieval
 
 describe("GraphQL Query: getUsersById", () => {
-	// Test 1: Successful Retrieval
+	afterAll(async () => {
+		await client.close();
+	});
 	it("should return a user when a valid ID is provided", async () => {
 		const query = {
 			query: `
