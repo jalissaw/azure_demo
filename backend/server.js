@@ -44,20 +44,20 @@ const root = {
 	async users() {
 		try {
 			const database = client.db("users");
-			const collection = await database.collection("user").find({}).toArray();
 
-			if (!collection) {
-				throw new Error("Unable to connect");
-			}
+			const collection = database.collection("user");
+			const docs = await collection.find({}).toArray();
 
-			const update_id_collections = collection.map((col) => ({
+			const update_id_collections = docs.map((col) => ({
 				...col,
 				id: col._id,
 			}));
 
-			return update_id_collections || users;
+			return update_id_collections;
 		} catch (err) {
+			console.error("Error fetching users from MongoDB:", err);
 			console.log(err);
+			throw err;
 		}
 	},
 
@@ -78,6 +78,7 @@ const root = {
 			const collection = database.collection("user");
 			newUser = await collection.insertOne(newUser);
 		} catch (err) {
+			console.error(err);
 			console.log(err);
 		}
 
@@ -96,7 +97,7 @@ app.use(
 	createHandler({
 		schema: schema,
 		rootValue: root,
-	})
+	}),
 );
 
 // Serve the GraphiQL IDE.
